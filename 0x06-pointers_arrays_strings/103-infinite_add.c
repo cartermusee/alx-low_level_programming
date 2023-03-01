@@ -1,124 +1,69 @@
 #include "main.h"
 
+
 /**
- * _strlen - a function that takes a pointer to an int as parameter and
- * updates the value it points to to 98
- * @s: chaine of caractere
+ * infinite_add - Add up two numbers stored in given char arrays
+ * @n1: The first number
+ * @n2: The second number
+ * @r: Pointer to the buffer to store result
+ * @size_r: The size of the buffer
  *
- * Return: 1 or 0
+ * Return: 0 if buffer too small to store result, else return pointer to buffer
  */
-
-int _strlen(char *s)
-{
-	int i = 0;
-
-	while (s[i])
-		i++;
-	return (i);
-}
-
-/**
- * _bigger - a function that takes a pointer to an int as parameter and
- * updates the value it points to to 98
- * @a: chaine of caractere
- * @b: chaine of caractere
- *
- * Return: the bigger of a and b
- */
-
-int _bigger(int a, int b)
-{
-	if (a <= b)
-		return (b);
-	else
-		return(a);
-}
-
-/**
- * rev_string - a function that takes a pointer to an int as parameter and
- * @s: chaine of caractere
- *
- * Return: 1 or 0
- */
-
-void rev_string(char *s)
-{
-	int i = 0, taille, k;
-	char c;
-
-	while (s[i] != '\0')
-		i++;
-
-	i--;
-	taille = i;
-	k = i / 2;
-	i = 0;
-
-	while (i <= k)
-	{
-		c = s[i];
-		s[i] = s[taille];
-		s[taille] = c;
-		i++;
-		taille--;
-	}
-}
-
-
-/**
-  * infinite_add - print numbers chars
-  * @n1: the chaine of caractere
-  * @n2: the chaine of caractere
-  * @r: the chaine of caractere
-  * @size_r: the chaine of caractere
-  * Return: 0
- **/
-
 char *infinite_add(char *n1, char *n2, char *r, int size_r)
 {
-	char *bigger_ch, *smaller_ch, ret = '0';
-	int taille_n1, taille_n2;
-	int i = 0, j = 0;
+	int l1, l2, tmpl, rl, i, sum, num1, num2, carry;
+	char tmp[10000];
 
-	taille_n1 = _strlen(n1);
-	taille_n2 = _strlen(n2);
-	
-	if (taille_n1 >= taille_n2)
-	{
-		bigger_ch = n1;
-		smaller_ch = n2;
-	}
-	else 
-	{
-		bigger_ch = n2;
-		smaller_ch = n1;
-	}
-	
-	if (size_r < _bigger(taille_n1, taille_n2))
+	rl = i = l1 = l2 = sum = num1 = num2 = carry = 0;
+	while (n1[l1] != '\0')
+		l1++;
+	while (n2[l2] != '\0')
+		l2++;
+	if (l1 + 2 > size_r || l2 + 2 > size_r)
 		return (0);
-	else
+	l1--;
+	l2--;
+	while (i <= l1 || i <= l2)
 	{
-		rev_string(bigger_ch);
-		rev_string(smaller_ch);
-		while(bigger_ch[j])
+		num1 = num2 = 0;
+		if (i <= l1)
+			num1 = n1[l1 - i] - '0';
+		if (i <= l2 && (l2 - i) >= 0)
+			num2 = n2[l2 - i] - '0';
+		sum = num1 + num2 + carry;
+		if (sum >= 10)
 		{
-			if(smaller_ch[i])
-			{
-				r[i] = (((smaller_ch[i] - '0') + (bigger_ch[i] - '0') + (ret - '0')) % 10) + '0';
-				ret = (((smaller_ch[i] - '0') + (bigger_ch[i] - '0') + (ret - '0')) / 10) + '0';
-			}
-			else
-			{
-				r[i] = (((bigger_ch[i] - '0') + (ret - '0')) % 10) + '0';
-				ret = (((bigger_ch[i] - '0') + ret) / 10);
-			}
-
-			i++;
+			carry = 1;
+			sum -= 10;
 		}
-		rev_string(r);
-		rev_string(bigger_ch);
-		rev_string(smaller_ch);
-		return (r);
-
+		else
+			carry = 0;
+		r[i] = sum + '0';
+		i++;
+		rl++;
 	}
+	if (carry > 0)
+	{
+		r[i] = carry + '0';
+		r[i + 1] = '\0';
+	}
+	i = tmpl = 0;
+	while (i <= rl)
+	{
+		tmp[i] = r[rl - i];
+		tmpl++;
+		i++;
+	}
+	i = 0;
+	while (i < tmpl)
+	{
+		if (r[i] == '\0')
+		{
+			break;
+		}
+		r[i] = tmp[i];
+		i++;
+	}
+	return (r);
 }
