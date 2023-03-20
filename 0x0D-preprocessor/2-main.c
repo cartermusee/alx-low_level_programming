@@ -1,5 +1,10 @@
 #include <stdio.h>
 
+/**
+ * main - main function
+ * Return: int (0 or 1)
+ */
+
 int main()
 {
 	printf("%s\n",__FILE__);
