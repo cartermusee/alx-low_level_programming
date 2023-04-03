@@ -10,10 +10,14 @@
  * Return: the address of the new element, or NULL if it failed
  */
 
-listint_t *add_nodeint_end(listint_t **head, const int)
+listint_t *add_nodeint_end(listint_t **head, const int n)
 {
 	listint_t *neww = malloc(sizeof(listint_t));
 
+	if (neww == NULL)
+	{
+		return (NULL);
+	}
 	neww->n = n;
 	neww->next = NULL;
 
