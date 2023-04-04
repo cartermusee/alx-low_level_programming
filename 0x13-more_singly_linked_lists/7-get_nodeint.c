@@ -1,9 +1,10 @@
 #include "lists.h"
 
 /**
- * struct listint_s - singly linked list
- * @n: integer
- * @next: points to the next node
+ * get_nodeint_at_index - function that returns the nth node of a listint_t
+ * @index: the index of the node
+ * @head: pointer to the list
+ * Return: return NULL if no node
  */
 
 listint_t *get_nodeint_at_index(listint_t *head, unsigned int index)
