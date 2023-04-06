@@ -6,7 +6,7 @@
 /**
  * binary_to_uint - function that converts a binary number to an unsigned int
  * @b:pointer to a char
- * Return:the converted number, or 0 
+ * Return:the converted number,or 0 
  */
 
 
