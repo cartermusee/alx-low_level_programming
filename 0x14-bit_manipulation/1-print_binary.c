@@ -9,9 +9,10 @@
 void print_binary(unsigned long int n)
 {
 	unsigned long int start;
+
 	int i;
-	
-	start = 1ul << (sizeof(unsigned long int)*8-1);
+
+	start = 1ul << (sizeof(unsigned long int) * 8 - 1);
 	while (start)
 	{
 		if (n & start)
