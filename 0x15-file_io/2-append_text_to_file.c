@@ -13,7 +13,7 @@ int append_text_to_file(const char *filename, char *text_content)
 {
 	int fds;
 
-	ssize_t byte =0;
+	ssize_t byte = 0;
 
 	ssize_t len = _strlen(text_content);
 
@@ -21,17 +21,18 @@ int append_text_to_file(const char *filename, char *text_content)
 	{
 		return (-1);
 	}
+	if (text_content == NULL)
+	{
+		return (1);
+	}
 	fds = open(filename, O_WRONLY | O_APPEND);
 
 	while (fds == -1)
 	{
 		return (-1);
 	}
-	while (len)
-	{
-		byte = write(fds, text_content, len);
-	}
-	close (fds);
+	byte = write(fds, text_content, len);
+	close(fds);
 	if (byte == len)
 	{
 		return (1);
@@ -41,8 +42,6 @@ int append_text_to_file(const char *filename, char *text_content)
 		return (-1);
 	}
 }
-
-
 /**
  * _strlen - returns the length of a string
  * @s: the string whose length to check
