@@ -3,7 +3,7 @@
 /**
  * get_dnodeint_at_index - func returns node at an index
  * @head: ptr to head node
- * @index: index of node 
+ * @index: index of node
  * Return: address of node
  */
 dlistint_t *get_dnodeint_at_index(dlistint_t *head, unsigned int index)
