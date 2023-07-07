@@ -1,7 +1,7 @@
 #include "hash_tables.h"
 
 /**
- * new_node - funcition for new node 
+ * new_node - funcition for new node
  * @key: the key
  * @value: the value
  * Return: the node or NULL

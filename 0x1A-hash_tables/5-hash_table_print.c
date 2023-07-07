@@ -10,9 +10,9 @@
 void hash_table_print(const hash_table_t *ht)
 {
 	size_t print = 0;
-    hash_node_t *nod;
-    unsigned long i = 0;
-	
+	hash_node_t *nod;
+	unsigned long i = 0;
+
 
 	if (!ht)
 		return;
