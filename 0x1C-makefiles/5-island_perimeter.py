@@ -1,12 +1,14 @@
 #!/usr/bin/python3
 """function to calculated perimeter land water"""
+
+
 def island_perimeter(grid):
     """function itself
     arg:
         grid:which is a list
     return:perimeter"""
     perimeter = 0
-    row,col = len(grid), len(grid[0])
+    row, col = len(grid), len(grid[0])
 
     for i in range(row):
         for j in range(col):

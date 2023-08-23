@@ -6,11 +6,16 @@ RM= rm -f
 
 all: $(OBJ)
         $(CC) $(SRC) -o $(NAME)
+
 %.o:%.c
 	$(CC) $(CFLAGS) -c -o $@ $<
+
 clean:
         $(RM) *~ $(NAME)
+
 oclean:
         $(RM) $(OBJ)
+
 fclean: clean oclean
+
 re: oclean all
