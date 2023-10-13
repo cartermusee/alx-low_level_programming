@@ -24,10 +24,15 @@ int binary_search(int *array, size_t size, int value)
 	while (l <= r)
 	{
 		mid = l + (r - l) / 2;
-		printf("Searching in array:");
+		printf("Searching in array: ");
 		for (i = l; i <= r; i++)
 		{
-			printf("%d, ", array[i]);
+			printf("%d", array[i]);
+			if (i < r)
+			{
+				printf(", ");
+
+			}
 		}
 		printf("\n");
 
